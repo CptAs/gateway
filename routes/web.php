@@ -4,6 +4,7 @@ use App\Services;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Http\Controllers\FirebaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Http;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('get-firebase-data', [FirebaseController::class, 'index'])->name('firebase.index');
 
 Route::get('/', function () {
     return view('gate');
