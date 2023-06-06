@@ -17,12 +17,11 @@ use App\Http\Controllers\FirebaseController;
 |
 */
 
-Route::middleware('firebase')->group(function () {
     Route::get('get-firebase-data', [FirebaseController::class, 'auth'])->name('firebase.index');
 
     Route::get('/', function () {
         return view('gate');
-    })->name('home')->middleware('firebase');;
+    })->name('home');
 
     Route::get('/getLandmark/{lat}/{lng}', function (Request $request) {
         return redirect()->away(Services::MARKING_LANDMARKS_URL . '/landmark/' . $request->lat . '/' . $request->lng);
@@ -66,7 +65,6 @@ Route::middleware('firebase')->group(function () {
             'date' => $request->tour_datetime
         ]);
     });
-});
 // Route::post('/landmark/updateProperty', [LandmarkUserController::class, 'updateProperty']);
 // Route::post('/landmark/addComment', [CommentController::class, 'addComment']);
 
